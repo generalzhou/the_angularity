@@ -1,6 +1,6 @@
 var app = angular.module('myApp', []);
 
-var apiKey = ''
+var apiKey = 'MDE2OTUwMTYzMDE0MTI1NjY1NjBhM2I5Yg001'
     nprUrl = 'http://api.npr.org/query?id=61&fields=relatedLink,title,byline,text,audio,image,pullQuote&output=JSON';
 
 app.controller('PlayerController', ['$scope', '$http', function($scope, $http) {
@@ -38,3 +38,18 @@ app.controller('PlayerController', ['$scope', '$http', function($scope, $http) {
   })
 }]);
 
+app.directive('nprLink', function() {
+  return {
+    restrict: 'EA',
+    require: ['^ngModel'],
+    replace: true,
+    scope: {
+      ngModel: '=',
+      play: '&'
+    },
+    templateUrl: 'views/nprListItem.html',
+    link: function(scope, ele, attr) {
+      scope.duration = scope.ngModel.audio[0].duration.$text;
+    }
+  }
+});

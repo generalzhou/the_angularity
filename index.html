@@ -6,19 +6,11 @@
   </head>
   <body>
     <div ng-controller="PlayerController">
-      <p> {{apiUrl}}
-      <table>
-        <thead>
-          <td>
-            name
-          </td>
-        </thead>
-        <tr ng-repeat='program in programs'>
-          <td>
-            <a ng-click="play(program)">{{ program.title.$text }}<a>
-          </td>
-        </tr>
-      </table>
+      <ul>
+        <li ng-repeat='program in programs'>
+          <span npr-link play='play(program)' ng-model='program'>
+        </li>
+      </ul>
       <button ng-click="play()" class="button" ng-show="!playing">Play</button>
       <button ng-click="stop()" class="button" ng-show="playing">Stop</button>
       Playing audio: <b>{{ playing }}</b>
