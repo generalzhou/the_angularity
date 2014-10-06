@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app='myApp'>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div ng-controller="PlayerController">
+      <p> {{apiUrl}}
+      <table>
+        <thead>
+          <td>
+            name
+          </td>
+        </thead>
+        <tr ng-repeat='program in programs'>
+          <td>
+            <a ng-click="play(program)">{{ program.title.$text }}<a>
+          </td>
+        </tr>
+      </table>
+      <button ng-click="play()" class="button" ng-show="!playing">Play</button>
+      <button ng-click="stop()" class="button" ng-show="playing">Stop</button>
+      Playing audio: <b>{{ playing }}</b>
+    </div>
+  </body>
+</html>
